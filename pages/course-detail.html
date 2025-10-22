@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Kursus - NoteFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #fff;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* NAVBAR */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+            color: #3e2ae0;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3e2ae0;
+        }
+
+        .nav-links a.active {
+            color: #3e2ae0;
+            font-weight: bold;
+        }
+
+        .btn-login {
+            background: #3e2ae0;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-login:hover {
+            background: #2c1cc7;
+            transform: scale(1.05);
+        }
+
+        /* HERO / COURSE HEADER */
+        .course-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 0 40px;
+        }
+
+        .course-header img {
+            width: 480px;
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-info {
+            flex: 1;
+        }
+
+        .course-info h1 {
+            font-size: 28px;
+            color: #3e2ae0;
+            margin-bottom: 15px;
+        }
+
+        .course-info p {
+            color: #444;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .course-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        .course-meta i {
+            color: #3e2ae0;
+            margin-right: 6px;
+        }
+
+        .btn-enroll {
+            background: #3e2ae0;
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-enroll:hover {
+            background: #2c1cc7;
+            transform: scale(1.05);
+        }
+
+        /* COURSE CONTENT */
+        .course-content {
+            background: #f7f8fc;
+            padding: 50px 0;
+            border-top: 1px solid #eee;
+        }
+
+        .course-content h2 {
+            text-align: center;
+            color: #3e2ae0;
+            margin-bottom: 40px;
+            font-size: 22px;
+        }
+
+        .lessons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .lesson-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .lesson-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .lesson-card i {
+            font-size: 28px;
+            color: #3e2ae0;
+            margin-bottom: 10px;
+        }
+
+        .lesson-card h3 {
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .lesson-card p {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #000;
+            color: #fff;
+            margin-top: auto;
+            padding: 20px 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 18px;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #3e2ae0;
+        }
+
+        @media (max-width: 768px) {
+            .course-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .course-meta {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <div class="navbar container">
+            <div class="logo">NoteFlow</div>
+            <div class="nav-right">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">Beranda</a></li>
+                        <li><a href="kursus.html" class="active">Kursus</a></li>
+                        <li><a href="tentang.html">Tentang</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </nav>
+                <a href="auth/login.html" class="btn-login">Login & Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- COURSE HEADER -->
+    <section class="course-header container">
+        <img src="../assets/img/course-gitar.jpg" alt="Gitar Akustik Dasar">
+        <div class="course-info">
+            <h1>Belajar Gitar Akustik Dasar</h1>
+            <p>Pelajari dasar-dasar bermain gitar mulai dari chord, ritme, dan teknik dasar hingga kamu mampu memainkan
+                lagu
+                favoritmu dengan percaya diri.</p>
+
+            <div class="course-meta">
+                <span><i class="fa-solid fa-user"></i> Instruktur: Andi Wijaya</span>
+                <span><i class="fa-solid fa-clock"></i> Durasi: 8 Jam</span>
+                <span><i class="fa-solid fa-music"></i> Level: Pemula</span>
+            </div>
+
+            <button class="btn-enroll">Mulai Belajar</button>
+        </div>
+    </section>
+
+    <!-- COURSE CONTENT -->
+    <section class="course-content">
+        <div class="container">
+            <h2>Materi yang Akan Dipelajari</h2>
+            <div class="lessons">
+                <div class="lesson-card">
+                    <i class="fa-solid fa-guitar"></i>
+                    <h3>Pengenalan Gitar</h3>
+                    <p>Mengenal bagian-bagian gitar, cara menyetem, dan posisi bermain yang benar.</p>
+                </div>
+                <div class="lesson-card">
+                    <i class="fa-solid fa-music"></i>
+                    <h3>Dasar Chord</h3>
+                    <p>Belajar memainkan chord dasar seperti C, D, G, dan Am dengan transisi yang halus.</p>
+                </div>
+                <div class="lesson-card">
+                    <i class="fa-solid fa-drum"></i>
+                    <h3>Strumming & Ritme</h3>
+                    <p>Pelajari teknik strumming untuk berbagai gaya musik seperti pop dan akustik.</p>
+                </div>
+                <div class="lesson-card">
+                    <i class="fa-solid fa-headphones"></i>
+                    <h3>Latihan Lagu</h3>
+                    <p>Praktik langsung memainkan lagu-lagu populer untuk meningkatkan kemampuanmu.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer container">
+            <div class="logo-footer">● NoteFlow</div>
+            <p>© 2024-2025 NoteFlow Inc.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/dimassaja___/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

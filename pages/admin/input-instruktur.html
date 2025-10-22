@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Instruktur - NoteFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f7f8fc;
+            color: #333;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 240px;
+            background: #3e2ae0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 0 20px 20px 0;
+            padding: 15px 0;
+            position: fixed;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px 0 20px;
+        }
+
+        .menu {
+            flex-grow: 1;
+        }
+
+        .menu-title {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+            margin-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 4px solid #fff;
+            padding-left: 21px;
+        }
+
+        .logout {
+            text-decoration: none;
+            color: #fff;
+            padding: 14px 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logout:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* MAIN */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-left: 240px;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            background: #fff;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            gap: 20px;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .toggle-btn {
+            font-size: 18px;
+            color: #3e2ae0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .user h4 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .user p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        /* CONTENT */
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .form-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.08);
+            max-width: 950px;
+            margin: auto;
+        }
+
+        .form-card h2 {
+            color: #3e2ae0;
+            font-size: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        form label {
+            font-size: 14px;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
+
+        form input:focus,
+        form select:focus,
+        form textarea:focus {
+            border-color: #3e2ae0;
+            box-shadow: 0 0 5px rgba(62, 42, 224, 0.2);
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: #3e2ae0;
+            color: #fff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #2b1dc2;
+        }
+
+        .footer {
+            background: #fff;
+            text-align: center;
+            padding: 12px;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">NoteFlow</div>
+
+        <div class="menu">
+            <p class="menu-title">MENU</p>
+            <a href="dashboard-admin.html"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+            <a href="siswa.html"><i class="fa-solid fa-user-graduate"></i> Siswa</a>
+            <a href="instruktur.html" class="active"><i class="fa-solid fa-chalkboard-user"></i> Instruktur</a>
+            <a href="kursus.html"><i class="fa-solid fa-book-open"></i> Kursus</a>
+            <a href="laporan.html"><i class="fa-solid fa-file-lines"></i> Laporan</a>
+        </div>
+
+        <a href="../auth/login.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="left-section">
+                <i class="fa-solid fa-bars toggle-btn"></i>
+            </div>
+
+            <div class="user">
+                <img src="https://i.pravatar.cc/40?u=instruktur" alt="user">
+                <div>
+                    <h4>Sigit Rendang</h4>
+                    <p>sigit.rendang@gmail.com</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="content">
+            <div class="form-card">
+                <h2>Form Tambah Instruktur</h2>
+                <form>
+                    <label>Nama Lengkap</label>
+                    <input type="text" placeholder="Masukkan nama lengkap instruktur">
+
+                    <label>Email</label>
+                    <input type="email" placeholder="Masukkan email instruktur">
+
+                    <label>Nomor Telepon</label>
+                    <input type="text" placeholder="Masukkan nomor telepon instruktur">
+
+                    <label>Spesialisasi</label>
+                    <select>
+                        <option value="">Pilih Spesialisasi</option>
+                        <option>Gitar</option>
+                        <option>Piano</option>
+                        <option>Vokal</option>
+                        <option>Drum</option>
+                        <option>Biola</option>
+                    </select>
+
+                    <label>Deskripsi Singkat</label>
+                    <textarea rows="4" placeholder="Tulis deskripsi singkat tentang instruktur..."></textarea>
+
+                    <button type="submit" class="btn-submit">Simpan Instruktur</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 NoteFlow. All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>

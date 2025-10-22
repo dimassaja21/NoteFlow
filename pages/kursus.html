@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursus Musik - NoteFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* RESET */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #fff;
+            color: #222;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+        /* NAVBAR */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+            color: #3e2ae0;
+        }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #3e2ae0;
+        }
+        .nav-links a.active {
+            color: #3e2ae0;
+            font-weight: bold;
+        }
+        .btn-login {
+            background: #3e2ae0;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .btn-login:hover {
+            background: #2c1cc7;
+            transform: scale(1.05);
+        }
+        /* SECTION TITLE */
+        .section-title {
+            text-align: center;
+            margin: 50px 0 30px;
+            color: #3e2ae0;
+            font-size: 26px;
+            font-weight: 700;
+        }
+        /* COURSE GRID */
+        .courses {
+            padding-bottom: 60px;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+        .course-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            padding: 18px;
+            transition: 0.3s;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .course-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .course-card h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+        .course-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+        .course-card a {
+            text-decoration: none;
+            color: #3e2ae0;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .course-card a:hover {
+            text-decoration: underline;
+        }
+        /* FOOTER */
+        footer {
+            background: #000;
+            color: #fff;
+            margin-top: auto;
+            padding: 20px 0;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .footer p {
+            font-size: 12px;
+            color: #bbb;
+        }
+        .social-icons a {
+            color: #fff;
+            font-size: 18px;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: #3e2ae0;
+        }
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .section-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <div class="navbar container">
+            <div class="logo">NoteFlow</div>
+            <div class="nav-right">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">Beranda</a></li>
+                        <li><a href="kursus.html" class="active">Kursus</a></li>
+                        <li><a href="tentang.html">Tentang</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </nav>
+                <a href="auth/login.html" class="btn-login">Login & Register</a>
+            </div>
+        </div>
+    </header>
+    <!-- KURSUS SECTION -->
+    <section class="courses container">
+        <h2 class="section-title">Semua Kursus Musik</h2>
+
+        <div class="course-grid">
+            <div class="course-card">
+                <img src="../assets/img/course-gitar.jpg" alt="Gitar Dasar">
+                <h3>Gitar Dasar</h3>
+                <p>Pelajari akor, petikan, dan teknik dasar bermain gitar dari nol hingga bisa memainkan lagu favoritmu.
+                </p>
+                <a href="course-detail.html">Lihat Detail →</a>
+            </div>
+
+            <div class="course-card">
+                <img src="../assets/img/course-piano.jpg" alt="Piano Modern">
+                <h3>Piano Modern</h3>
+                <p>Pelajari harmoni dan improvisasi, cocok bagi kamu yang ingin bermain piano pop dan jazz modern.</p>
+                <a href="course-detail.html">Lihat Detail →</a>
+            </div>
+
+            <div class="course-card">
+                <img src="../assets/img/course-vokal.jpg" alt="Kelas Vokal">
+                <h3>Kelas Vokal</h3>
+                <p>Latih teknik pernapasan, artikulasi, dan pengendalian nada bersama mentor berpengalaman.</p>
+                <a href="course-detail.html">Lihat Detail →</a>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer container">
+            <div class="logo-footer">● NoteFlow</div>
+            <p>© 2024-2025 NoteFlow Inc.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/dimassaja___/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

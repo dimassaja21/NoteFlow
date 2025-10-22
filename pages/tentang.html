@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - NoteFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* RESET & BASE */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #fff;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* NAVBAR */
+        header {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+            color: #3e2ae0;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3e2ae0;
+        }
+
+        .nav-links a.active {
+            color: #3e2ae0;
+            font-weight: bold;
+        }
+
+        .btn-login {
+            background: #3e2ae0;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-login:hover {
+            background: #2c1cc7;
+            transform: scale(1.05);
+        }
+
+        /* HERO / ABOUT SECTION */
+        .about {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            padding: 60px 0;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            max-width: 550px;
+        }
+
+        .about-text h1 {
+            color: #3e2ae0;
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            color: #444;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .about-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-img img {
+            width: 450px;
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        }
+
+        /* TEAM SECTION */
+        .team {
+            background: #f7f8fc;
+            padding: 60px 0;
+        }
+
+        .team h2 {
+            text-align: center;
+            color: #3e2ae0;
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            text-align: center;
+        }
+
+        .team-card {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .team-card img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .team-card h3 {
+            font-size: 16px;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .team-card p {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #000;
+            color: #fff;
+            margin-top: auto;
+            padding: 20px 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 18px;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #3e2ae0;
+        }
+
+        @media (max-width: 768px) {
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-img {
+                margin-top: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header>
+        <div class="navbar container">
+            <div class="logo">NoteFlow</div>
+            <div class="nav-right">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="../index.html">Beranda</a></li>
+                        <li><a href="kursus.html">Kursus</a></li>
+                        <li><a href="tentang.html" class="active">Tentang</a></li>
+                        <li><a href="kontak.html">Kontak</a></li>
+                    </ul>
+                </nav>
+                <a href="auth/login.html" class="btn-login">Login & Register</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="about container">
+        <div class="about-text">
+            <h1>Tentang NoteFlow</h1>
+            <p>NoteFlow adalah platform pembelajaran musik digital yang dirancang untuk membantu siapa pun — dari pemula
+                hingga profesional — dalam mengasah kemampuan bermusik mereka. Kami menyediakan berbagai kursus
+                interaktif,
+                panduan video, dan latihan praktis dari mentor berpengalaman di bidang musik modern.</p>
+            <p>Dengan sistem pembelajaran yang fleksibel dan berbasis proyek, NoteFlow memungkinkan kamu belajar dengan
+                menyenangkan dan tetap produktif.</p>
+        </div>
+
+        <div class="about-img">
+            <img src="../assets/img/about-music.jpg" alt="Tentang NoteFlow">
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer container">
+            <div class="logo-footer">● NoteFlow</div>
+            <p>© 2024-2025 NoteFlow Inc.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/dimassaja___/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

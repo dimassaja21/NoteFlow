@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Instruktur - NoteFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            background-color: #f7f8fc;
+            color: #333;
+        }
+
+        .sidebar {
+            width: 240px;
+            background: #3e2ae0;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-radius: 0 20px 20px 0;
+            padding: 15px 0;
+            position: fixed;
+            height: 100%;
+        }
+
+        .logo {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            padding: 10px 0 20px;
+        }
+
+        .menu {
+            flex-grow: 1;
+        }
+
+        .menu-title {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
+            margin-left: 25px;
+            margin-bottom: 10px;
+        }
+
+        .menu a {
+            color: #fff;
+            text-decoration: none;
+            padding: 12px 25px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        .menu a:hover,
+        .menu a.active {
+            background: rgba(255, 255, 255, 0.15);
+            border-left: 4px solid #fff;
+            padding-left: 21px;
+        }
+
+        .logout {
+            text-decoration: none;
+            color: #fff;
+            padding: 14px 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .logout:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            margin-left: 240px;
+        }
+
+        .topbar {
+            background: #fff;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+            gap: 20px;
+        }
+
+        .left-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .toggle-btn {
+            font-size: 18px;
+            color: #3e2ae0;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            background: #f2f2f8;
+            border-radius: 8px;
+            padding: 6px 12px;
+            flex: 1;
+            max-width: 300px;
+        }
+
+        .search input {
+            border: none;
+            background: transparent;
+            outline: none;
+            margin-left: 8px;
+            font-size: 14px;
+        }
+
+        .search i {
+            color: #666;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .user h4 {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .user p {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .content h1 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .table-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.08);
+            margin-top: 10px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .table-header h2 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #3e2ae0;
+        }
+
+        .add-btn {
+            background: #3e2ae0;
+            color: #fff;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #2b1dc2;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .data-table th {
+            background: #f4f4ff;
+            color: #3e2ae0;
+            text-align: left;
+            padding: 12px 14px;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+        }
+
+        .data-table tr:hover {
+            background: #fafaff;
+        }
+
+        .status {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status.active {
+            background: rgba(62, 42, 224, 0.1);
+            color: #3e2ae0;
+        }
+
+        .status.inactive {
+            background: rgba(255, 71, 71, 0.1);
+            color: #d63031;
+        }
+
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .edit-btn,
+        .delete-btn {
+            border: none;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #fff;
+        }
+
+        .edit-btn {
+            background: #ffb400;
+        }
+
+        .delete-btn {
+            background: #e74c3c;
+        }
+
+        .edit-btn:hover {
+            background: #e1a200;
+        }
+
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+
+        .footer {
+            background: #fff;
+            text-align: center;
+            padding: 12px;
+            border-top: 1px solid #eee;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">NoteFlow</div>
+        <div class="menu">
+            <p class="menu-title">MENU</p>
+            <a href="dashboard-admin.html"><i class="fa-solid fa-gauge"></i> Dashboard</a>
+            <a href="siswa.html"><i class="fa-solid fa-user-graduate"></i> Siswa</a>
+            <a href="instruktur.html" class="active"><i class="fa-solid fa-chalkboard-user"></i> Instruktur</a>
+            <a href="data-kursus.html"><i class="fa-solid fa-book-open"></i> Kursus</a>
+            <a href="laporan.html"><i class="fa-solid fa-file-lines"></i> Laporan</a>
+        </div>
+        <a href="../pages/auth/login.html" class="logout"><i class="fa-solid fa-right-from-bracket"></i> Log out</a>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div class="left-section">
+                <i class="fa-solid fa-bars toggle-btn"></i>
+            </div>
+            <div class="user">
+                <img src="https://i.pravatar.cc/40" alt="user">
+                <div>
+                    <h4>Sigit Rendang</h4>
+                    <p>sigit.rendang@gmail.com</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="content">
+            <h1>Data Instruktur</h1>
+            <div class="table-card">
+                <div class="table-header">
+                    <h2>Daftar Instruktur</h2>
+                    <a href="input-instruktur.html" class="add-btn"><i class="fa-solid fa-plus"></i> Tambah Instruktur</a>
+                </div>
+
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama</th>
+                            <th>Spesialisasi</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#001</td>
+                            <td>Raisa Putri</td>
+                            <td>Vokal</td>
+                            <td>raisa@gmail.com</td>
+                            <td><span class="status active">Aktif</span></td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
+                                <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#002</td>
+                            <td>Doni Wirawan</td>
+                            <td>Gitar</td>
+                            <td>doni@gmail.com</td>
+                            <td><span class="status inactive">Nonaktif</span></td>
+                            <td class="actions">
+                                <button class="edit-btn"><i class="fa-solid fa-pen"></i></button>
+                                <button class="delete-btn"><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>© 2025 NoteFlow. All rights reserved.</p>
+        </footer>
+    </main>
+</body>
+
+</html>

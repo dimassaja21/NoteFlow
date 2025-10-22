@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoteFlow</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh;background-color:#fff;color:#222;}
+    .container{width:90%;max-width:1200px;margin:auto;}
+    header{background:#fff;padding:15px 0;border-bottom:1px solid #eee;position:sticky;top:0;z-index:10;}
+    .navbar{display:flex;align-items:center;justify-content:space-between;}
+    .logo{font-weight:bold;font-size:20px;color:#3e2ae0;}
+    .nav-right{display:flex;align-items:center;gap:25px;}
+    .nav-links{list-style:none;display:flex;gap:30px;}
+    .nav-links a{text-decoration:none;color:#555;font-size:14px;position:relative;transition:color 0.3s;}
+    .nav-links a::after{content:"";position:absolute;width:0%;height:2px;bottom:-4px;left:0;background:#3e2ae0;transition:width 0.3s ease;}
+    .nav-links a:hover{color:#3e2ae0;}
+    .nav-links a:hover::after{width:100%;}
+    .btn-login{background:#3e2ae0;color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:500;transition:background 0.3s,transform 0.2s;}
+    .btn-login:hover{background:#2c1cc7;transform:scale(1.05);}
+    .hero{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:70px 0;gap:30px;}
+    .hero-text{flex:1;max-width:500px;}
+    .hero-text h1{font-size:32px;margin-bottom:15px;color:#222;}
+    .hero-text p{font-size:15px;color:#444;margin-bottom:25px;line-height:1.6;}
+    .btn-primary{background:#3e2ae0;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:14px;transition:background 0.3s,transform 0.2s;}
+    .btn-primary:hover{background:#2c1cc7;transform:scale(1.05);}
+    .hero-img img{width:480px;max-width:100%;}
+    .courses{padding:60px 0;background:#f9f9ff;}
+    .courses h2{text-align:center;color:#3e2ae0;margin-bottom:40px;font-size:24px;}
+    .course-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
+    .course-card{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);padding:20px;transition:0.3s;}
+    .course-card:hover{transform:translateY(-5px);}
+    .course-card img{width:100%;border-radius:10px;margin-bottom:15px;}
+    .course-card h3{font-size:18px;color:#333;margin-bottom:8px;}
+    .course-card p{font-size:13px;color:#666;margin-bottom:12px;}
+    .course-card a{text-decoration:none;color:#3e2ae0;font-weight:bold;font-size:13px;}
+    footer{background:#000;color:#fff;margin-top:auto;padding:20px 0;}
+    .footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
+    .footer p{font-size:12px;color:#bbb;}
+    .social-icons a{color:#fff;font-size:18px;margin-left:15px;transition:0.3s;}
+    .social-icons a:hover{color:#3e2ae0;}
+    @media(max-width:768px){.hero{flex-direction:column;text-align:center;}.hero-img{margin-top:20px;}.nav-links{display:none;}}
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="navbar container">
+            <div class="logo">NoteFlow</div>
+            <div class="nav-right">
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#" class="active">Beranda</a></li>
+                        <li><a href="pages/kursus.html">Kursus</a></li>
+                        <li><a href="pages/tentang.html">Tentang</a></li>
+                        <li><a href="pages/kontak.html">Kontak</a></li>
+                    </ul>
+                </nav>
+                <a href="pages/auth/login.html" class="btn-login">Login & Register</a>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero container">
+        <div class="hero-text">
+            <h1>NoteFlow - Kuasai Nada, Ciptakan Karya</h1>
+            <p>Website pembelajaran musik daring dengan materi sistematis dan latihan terarah untuk semua tingkat
+                kemampuan.</p>
+            <a href="pages/auth/login.html" class="btn-primary">Belajar Sekarang</a>
+        </div>
+        <div class="hero-img">
+            <img src="assets/img/hero-img.png" alt="Ilustrasi Band">
+        </div>
+    </section>
+    <!-- Kursus Populer -->
+    <section class="courses">
+        <div class="container">
+            <h2>Kursus Populer</h2>
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="assets/img/course-gitar.jpg" alt="Gitar Dasar">
+                    <h3>Gitar Dasar</h3>
+                    <p>Pelajari teknik dasar bermain gitar dan mulai mainkan lagu favoritmu.</p>
+                    <a href="pages/course-detail.html">Lihat Detail →</a>
+                </div>
+                <div class="course-card">
+                    <img src="assets/img/course-piano.jpg" alt="Piano Modern">
+                    <h3>Piano Modern</h3>
+                    <p>Kuasi harmoni dan improvisasi dalam bermain piano dengan gaya modern.</p>
+                    <a href="pages/course-detail.html">Lihat Detail →</a>
+                </div>
+                <div class="course-card">
+                    <img src="assets/img/course-vokal.jpg" alt="Kelas Vokal">
+                    <h3>Kelas Vokal</h3>
+                    <p>Asah kemampuan vokalmu bersama mentor profesional berpengalaman.</p>
+                    <a href="pages/course-detail.html">Lihat Detail →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer container">
+            <div class="logo-footer">● NoteFlow</div>
+            <p>© 2024-2025 NoteFlow Inc.</p>
+            <div class="social-icons">
+                <a href="https://www.instagram.com/dimassaja___/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-spotify"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
