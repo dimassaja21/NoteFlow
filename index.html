@@ -2,58 +2,304 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NoteFlow</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:Arial,sans-serif;display:flex;flex-direction:column;min-height:100vh;background-color:#fff;color:#222;}
-    .container{width:90%;max-width:1200px;margin:auto;}
-    header{background:#fff;padding:15px 0;border-bottom:1px solid #eee;position:sticky;top:0;z-index:10;}
-    .navbar{display:flex;align-items:center;justify-content:space-between;}
-    .logo{font-weight:bold;font-size:20px;color:#3e2ae0;}
-    .nav-right{display:flex;align-items:center;gap:25px;}
-    .nav-links{list-style:none;display:flex;gap:30px;}
-    .nav-links a{text-decoration:none;color:#555;font-size:14px;position:relative;transition:color 0.3s;}
-    .nav-links a::after{content:"";position:absolute;width:0%;height:2px;bottom:-4px;left:0;background:#3e2ae0;transition:width 0.3s ease;}
-    .nav-links a:hover{color:#3e2ae0;}
-    .nav-links a:hover::after{width:100%;}
-    .btn-login{background:#3e2ae0;color:#fff;padding:8px 18px;border-radius:6px;text-decoration:none;font-size:14px;font-weight:500;transition:background 0.3s,transform 0.2s;}
-    .btn-login:hover{background:#2c1cc7;transform:scale(1.05);}
-    .hero{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:70px 0;gap:30px;}
-    .hero-text{flex:1;max-width:500px;}
-    .hero-text h1{font-size:32px;margin-bottom:15px;color:#222;}
-    .hero-text p{font-size:15px;color:#444;margin-bottom:25px;line-height:1.6;}
-    .btn-primary{background:#3e2ae0;color:#fff;padding:10px 20px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:14px;transition:background 0.3s,transform 0.2s;}
-    .btn-primary:hover{background:#2c1cc7;transform:scale(1.05);}
-    .hero-img img{width:480px;max-width:100%;}
-    .courses{padding:60px 0;background:#f9f9ff;}
-    .courses h2{text-align:center;color:#3e2ae0;margin-bottom:40px;font-size:24px;}
-    .course-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:25px;}
-    .course-card{background:#fff;border-radius:10px;box-shadow:0 4px 10px rgba(0,0,0,0.08);padding:20px;transition:0.3s;}
-    .course-card:hover{transform:translateY(-5px);}
-    .course-card img{width:100%;border-radius:10px;margin-bottom:15px;}
-    .course-card h3{font-size:18px;color:#333;margin-bottom:8px;}
-    .course-card p{font-size:13px;color:#666;margin-bottom:12px;}
-    .course-card a{text-decoration:none;color:#3e2ae0;font-weight:bold;font-size:13px;}
-    footer{background:#000;color:#fff;margin-top:auto;padding:20px 0;}
-    .footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;}
-    .footer p{font-size:12px;color:#bbb;}
-    .social-icons a{color:#fff;font-size:18px;margin-left:15px;transition:0.3s;}
-    .social-icons a:hover{color:#3e2ae0;}
-    @media(max-width:768px){.hero{flex-direction:column;text-align:center;}.hero-img{margin-top:20px;}.nav-links{display:none;}}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background: #fff;
+            color: #222;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        header {
+            background: #fff;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 20px;
+            color: #3e2ae0;
+            cursor: pointer;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #555;
+            font-size: 14px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background: #3e2ae0;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #3e2ae0;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .btn-login {
+            background: #3e2ae0;
+            color: #fff;
+            padding: 8px 18px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-login:hover {
+            background: #2c1cc7;
+            transform: scale(1.05);
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 70px 0;
+            gap: 30px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 500px;
+        }
+
+        .hero-text h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        .hero-text p {
+            font-size: 15px;
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            background: #3e2ae0;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: #2c1cc7;
+            transform: scale(1.05);
+        }
+
+        .hero-img img {
+            width: 480px;
+            max-width: 100%;
+        }
+
+        .courses {
+            padding: 60px 0;
+            background: #f9f9ff;
+        }
+
+        .courses h2 {
+            text-align: center;
+            color: #3e2ae0;
+            margin-bottom: 40px;
+            font-size: 24px;
+        }
+
+        .course-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+        }
+
+        .course-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-card img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .course-card h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .course-card p {
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 12px;
+        }
+
+        .course-card a {
+            text-decoration: none;
+            color: #3e2ae0;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            margin-top: auto;
+            padding: 20px 0;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .footer p {
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        .social-icons a {
+            color: #fff;
+            font-size: 18px;
+            margin-left: 15px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #3e2ae0;
+        }
+
+        .toast-wrapper {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background: #3e2ae0;
+            color: #fff;
+            padding: 10px 14px;
+            border-radius: 8px;
+            min-width: 200px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .toast button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        @media(max-width:768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center
+            }
+
+            .hero-img {
+                margin-top: 20px
+            }
+
+            .nav-links {
+                display: none
+            }
+        }
     </style>
 </head>
 
 <body>
-    <!-- Navbar -->
     <header>
         <div class="navbar container">
-            <div class="logo">NoteFlow</div>
+            <div class="logo" id="logo">NoteFlow</div>
             <div class="nav-right">
                 <nav>
-                    <ul class="nav-links">
+                    <ul class="nav-links" id="navLinks">
                         <li><a href="#" class="active">Beranda</a></li>
                         <li><a href="pages/kursus.html">Kursus</a></li>
                         <li><a href="pages/tentang.html">Tentang</a></li>
@@ -64,56 +310,160 @@
             </div>
         </div>
     </header>
-    <!-- Hero Section -->
+
     <section class="hero container">
         <div class="hero-text">
-            <h1>NoteFlow - Kuasai Nada, Ciptakan Karya</h1>
+            <h1 id="greeting">NoteFlow - Kuasai Nada, Ciptakan Karya</h1>
             <p>Website pembelajaran musik daring dengan materi sistematis dan latihan terarah untuk semua tingkat
                 kemampuan.</p>
-            <a href="pages/auth/login.html" class="btn-primary">Belajar Sekarang</a>
+            <a href="#" id="btnMulai" class="btn-primary">Belajar Sekarang</a>
         </div>
         <div class="hero-img">
             <img src="assets/img/hero-img.png" alt="Ilustrasi Band">
         </div>
     </section>
-    <!-- Kursus Populer -->
+
     <section class="courses">
         <div class="container">
             <h2>Kursus Populer</h2>
-            <div class="course-list">
+            <div class="course-list" id="courseList">
                 <div class="course-card">
                     <img src="assets/img/course-gitar.jpg" alt="Gitar Dasar">
                     <h3>Gitar Dasar</h3>
                     <p>Pelajari teknik dasar bermain gitar dan mulai mainkan lagu favoritmu.</p>
-                    <a href="pages/course-detail.html">Lihat Detail →</a>
+                    <a href="#">Lihat Detail →</a>
                 </div>
                 <div class="course-card">
                     <img src="assets/img/course-piano.jpg" alt="Piano Modern">
                     <h3>Piano Modern</h3>
                     <p>Kuasi harmoni dan improvisasi dalam bermain piano dengan gaya modern.</p>
-                    <a href="pages/course-detail.html">Lihat Detail →</a>
+                    <a href="#">Lihat Detail →</a>
                 </div>
                 <div class="course-card">
                     <img src="assets/img/course-vokal.jpg" alt="Kelas Vokal">
                     <h3>Kelas Vokal</h3>
                     <p>Asah kemampuan vokalmu bersama mentor profesional berpengalaman.</p>
-                    <a href="pages/course-detail.html">Lihat Detail →</a>
+                    <a href="#">Lihat Detail →</a>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Footer -->
+
     <footer>
         <div class="footer container">
             <div class="logo-footer">● NoteFlow</div>
             <p>© 2024-2025 NoteFlow Inc.</p>
             <div class="social-icons">
-                <a href="https://www.instagram.com/dimassaja___/"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-tiktok"></i></a>
                 <a href="#"><i class="fab fa-youtube"></i></a>
                 <a href="#"><i class="fab fa-spotify"></i></a>
             </div>
         </div>
     </footer>
+
+    <div class="toast-wrapper" id="toastWrapper"></div>
+
+    <script>
+        // === DOM 1: Typing Animation ===
+        const heroTitle = document.querySelector(".hero h1");
+        const text = heroTitle.textContent;
+        heroTitle.textContent = "";
+        let index = 0;
+        function typeEffect() {
+            if (index < text.length) {
+                heroTitle.textContent += text.charAt(index);
+                index++;
+                setTimeout(typeEffect, 100);
+            }
+        }
+        window.addEventListener("load", typeEffect);
+
+        // === DOM 2: Highlight card on hover ===
+        document.querySelectorAll(".course-card").forEach(card => {
+            card.addEventListener("mouseenter", () => card.style.boxShadow = "0 0 15px rgba(62,42,224,0.6)");
+            card.addEventListener("mouseleave", () => card.style.boxShadow = "0 4px 10px rgba(0,0,0,0.08)");
+        });
+
+        // === DOM 3: Add total course info ===
+        const courseList = document.querySelectorAll(".course-card");
+        const info = document.createElement("p");
+        info.textContent = `Tersedia ${courseList.length} kursus populer untukmu!`;
+        info.style.textAlign = "center";
+        info.style.color = "#444";
+        info.style.marginBottom = "20px";
+        document.querySelector(".courses .container").insertBefore(info, document.querySelector(".course-list"));
+
+        // === Toast Function ===
+        const toast = document.createElement("div");
+        Object.assign(toast.style, {
+            position: "fixed", bottom: "30px", left: "50%", transform: "translateX(-50%)",
+            background: "#3e2ae0", color: "#fff", padding: "10px 20px",
+            borderRadius: "6px", boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+            opacity: "0", transition: "opacity 0.4s,bottom 0.4s", fontSize: "14px", zIndex: "9999"
+        });
+        document.body.appendChild(toast);
+        function showToast(message) {
+            toast.textContent = message;
+            toast.style.opacity = "1"; toast.style.bottom = "50px";
+            setTimeout(() => { toast.style.opacity = "0"; toast.style.bottom = "30px"; }, 3000);
+        }
+
+        // === POPUP 1: Sambutan ringan hanya sekali per sesi ===
+        if (!sessionStorage.getItem("welcomeShown")) {
+            alert("Selamat datang di NoteFlow! 🎶 Semoga harimu penuh inspirasi musik.");
+            sessionStorage.setItem("welcomeShown", "true");
+        }
+
+        // === POPUP 2: Redirect confirm on "Belajar Sekarang" ===
+        document.getElementById("btnMulai").addEventListener("click", e => {
+            e.preventDefault();
+            const goLogin = confirm("Kamu akan diarahkan ke halaman Login untuk mulai belajar. Lanjut?");
+            if (goLogin) {
+                window.location.href = "pages/auth/login.html";
+            } else {
+                showToast("Baik, kamu tetap di sini dulu 😄");
+            }
+        });
+
+        // === Event 1: Double-click logo to show welcome toast ===
+        document.getElementById("logo").addEventListener("dblclick", () => {
+            showToast("Selamat datang di NoteFlow 🎶");
+        });
+
+        // === Event 2: Mouseover course image change ===
+        document.querySelectorAll(".course-card img").forEach(img => {
+            img.addEventListener("mouseover", () => img.style.filter = "brightness(0.7)");
+            img.addEventListener("mouseout", () => img.style.filter = "brightness(1)");
+        });
+
+        // === Event 3: Keyboard shortcut to reload (CTRL + R custom) ===
+        document.addEventListener("keydown", e => {
+            if (e.ctrlKey && e.key === "r") {
+                e.preventDefault();
+                if (confirm("Ingin memuat ulang halaman NoteFlow?")) location.reload();
+            }
+        });
+
+        // === FETCH (Asynchronous + Promise) ===
+        const data = [
+            { title: "Drum Dasar", desc: "Belajar ritme dan tempo dalam permainan drum.", img: "assets/img/course-drum.jpg", link: "#" },
+            { title: "Bass Groove", desc: "Pelajari groove bass yang solid dan menarik.", img: "assets/img/course-bass.jpg", link: "#" }
+        ];
+
+        data.forEach(course => {
+            const div = document.createElement("div");
+            div.className = "course-card";
+            div.innerHTML = `<img src="${course.img}" alt="${course.title}">
+                            <h3>${course.title}</h3>
+                            <p>${course.desc}</p>
+                            <a href="${course.link}">Lihat Detail →</a>
+                        `;
+            document.getElementById("courseList").appendChild(div);
+        });
+        showToast("Kursus tambahan berhasil dimuat 🎸");
+
+    </script>
 </body>
+
 </html>
